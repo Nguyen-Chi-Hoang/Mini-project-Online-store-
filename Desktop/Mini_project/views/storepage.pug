@@ -1,0 +1,55 @@
+doctype html
+
+html
+  head
+    meta(charset="utf-8")
+    link(rel="shortcut icon", href="/favicon.ico")
+    meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    meta(name="theme-color", content="#000000")
+    link(rel="stylesheet" href="/storepage.css")
+    link(rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css")
+    title Store page
+  body
+    header
+      img(src="./images/logo.jpg", alt="" style="height: 70px; width: 100px; float: left;").logo 
+      .user-func 
+        a(href="/login").login login 
+        a(href="/register").signup signup
+      .cart
+        a(class="fa-solid fa-cart-shopping fa-2x" herf="#")
+      .search-bar 
+        input(id="search" type="search" placeholder="Start typing to search...")
+    .content 
+
+    footer.footer 
+      .container
+        .row
+          .footer-col
+            h4 company 
+            ul
+              - const company = ["about", "our services", "privacy policy", "affiliate program"]
+              for i in company
+                li
+                  a(herf="#")= i
+          .footer-col 
+            h4 get help 
+            ul 
+              - const gethelp = ["FAQ", "shipping", "returns", "order status", "payment options"]
+              for i in gethelp
+                li
+                  a(herf="#")= i
+          .footer-col 
+            h4 online shop 
+            ul 
+              - const onlineshop = ["watch", "bag", "shoes", "dress"]
+              for i in onlineshop
+                li
+                  a(herf="#")= i
+          .footer-col 
+            h4 follow us
+            .social-links
+              - const links = ["fab fa-facebook-f", "fab fa-twitter", "fab fa-instagram", "fab fa-linkedin-in"]
+              for l in links
+                a(herf="#")
+                  i(class=l)
