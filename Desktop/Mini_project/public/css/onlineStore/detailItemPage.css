@@ -1,0 +1,105 @@
+  /* Main Container */
+  .container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
+  }
+  
+  /* Detailed Item Section */
+  .item-details {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  
+  .item-image {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .item-image img {
+    max-width: 200px;
+    height: 250px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .item-description {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .item-description h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .item-description .price {
+    font-size: 2em;
+    color: #4CAF50;
+    margin-bottom: 15px;
+  }
+  
+  .item-description .details {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  
+  /* Quantity and Actions */
+  .quantity {
+    margin-bottom: 20px;
+  }
+  
+  .quantity label {
+    font-size: 1em;
+    color: #333;
+  }
+  
+  .quantity input {
+    width: 60px;
+    padding: 5px;
+    margin-left: 10px;
+    font-size: 1em;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  .actions {
+    margin-top: 30px;
+  }
+  
+  .actions button,
+  .actions a {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: 10px;
+  }
+  
+  .actions button {
+    background-color: #4CAF50;
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  
+  .actions button:hover {
+    background-color: #45a049;
+  }
+  
+  .actions a {
+    background-color: #ccc;
+    color: #333;
+    transition: background-color 0.3s ease;
+  }
+  
+  .actions a:hover {
+    background-color: #bbb;
+  }

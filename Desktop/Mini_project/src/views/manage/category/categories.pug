@@ -1,0 +1,76 @@
+extends ../manageMain.pug
+
+block styles
+  link(rel="stylesheet" href="../../css/manage/category/categories.css")
+
+block content
+  h2 Category Management
+  a(href="/manage/category/new?directory=banner_images", class="btn btn-primary") Add New Category
+  table(class="sortable-table")
+    thead
+      tr
+        th Name
+        th Description
+        th Banner
+        th State
+        th Created At
+        th Last Update
+        th Actions
+    tbody(id="sortable")
+      each category in categories
+        tr(class="sortable-item", data-id=category.id)
+          td #{category.category_name}
+          td #{category.description}
+          td
+            if category.bannerUrl
+              img(src=`/${category.bannerUrl}`, alt="Banner Image", class="banner-img")
+            else
+              i No Image
+          td 
+            if category.state
+              i(style='color: green;') active 
+            else 
+              i(style='color: red;') inactive
+          td #{category.createdAt.toLocaleDateString() + ' ' + category.createdAt.toLocaleTimeString()}
+          td
+            if category.updateAt
+              | #{category.updateAt.toLocaleDateString() + ' ' + category.updateAt.toLocaleTimeString()}
+            else
+              | None
+          td
+            a(href=`/manage/category/${category.id}/update?directory=banner_images`, class="btn btn-warning") Edit
+            a(href=`/manage/category/${category.id}/delete`, class="btn btn-danger") Delete
+
+  script(src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js")
+  script.
+    //- import Sortable from 'sortablejs';
+    // Initialize SortableJS
+    const sortable = Sortable.create(document.getElementById('sortable'), {
+      animation: 150,
+      placeholderClass: 'sortable-placeholder',
+      onEnd: function(evt) {
+        console.log('List after sorting:', getListOrder());
+        // Automatically save the order after drag-and-drop
+        saveOrder();
+      }
+    });
+
+    // Save the order to the database
+    function saveOrder() {
+      const order = getListOrder();
+      fetch('/save-order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ order: order })
+      })
+      .then(response => response.ok ? console.log('Save successful') : console.log('Save failed'))
+      .catch(error => console.log('An error occurred:', error));
+    }
+
+    // Get the current order list
+    function getListOrder() {
+      const items = document.querySelectorAll('#sortable .sortable-item');
+      return Array.from(items).map(item => item.getAttribute('data-id'));
+    }

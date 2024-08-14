@@ -1,0 +1,44 @@
+extends ../manageMain.pug
+
+block styles
+  link(rel="stylesheet" href="../../css/manage/item/items.css")
+
+block content
+  h2 Product Management
+  a(href="/manage/item/new?directory=item_images", class="btn btn-primary") Add New Product
+
+  table(class="table table-striped")
+    thead
+      tr
+        th Product Name
+        th Barcode
+        th category type
+        th Import Price
+        th Purchase Price
+        th Sale Price
+        th Inventory quantity
+        th Weight
+        th Image
+        th Description
+        th Actions
+    tbody
+      each item in items
+        tr
+          td #{item.name}
+          td 
+            img(src=`/${item.barcode}`, alt="Barcode Image", class="item-img")
+          td #{item.category_type}
+          td #{item.importPrice}
+          td #{item.purchasePrice}
+          td #{item.salePrice}
+          td #{item.inventoryQuantity}
+          td #{item.weight}
+          td
+            if item.image
+              img(src=`/${item.image}`, alt="Item Image", class="item-img")
+            else
+              | No Image
+          td #{item.description}
+          td
+            a(href=`/manage/item/${item._id}/update?directory=item_images`, class="btn btn-warning") Edit
+            a(href=`/manage/item/${item._id}/delete`, class="btn btn-danger") Delete

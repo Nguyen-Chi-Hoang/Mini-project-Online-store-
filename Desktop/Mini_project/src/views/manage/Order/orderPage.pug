@@ -1,0 +1,25 @@
+//- Extend the base layout
+extends ../manageMain.pug
+
+block styles
+    link(rel="stylesheet" href="../../css/manage/orders/main.css")
+
+block content
+    h2 Customer Orders
+    table(class="order-table")
+      thead
+        tr
+          th Customer Name
+          th Items
+          th Total Amount
+          th Order Date
+      tbody
+        each order in orders
+          tr
+            td= order.user_name
+            td
+              ul
+                each item in order.items
+                  li= `${item.item_name} (x${item.number}) - $${item.price}`
+            td $#{order.total.toFixed(2)}
+            td #{order.createdAt.toLocaleDateString() + ' ' + order.createdAt.toLocaleTimeString()}

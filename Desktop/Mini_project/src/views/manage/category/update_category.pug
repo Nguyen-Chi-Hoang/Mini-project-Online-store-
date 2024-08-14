@@ -1,0 +1,31 @@
+extends ../manageMain.pug
+
+block styles
+  link(rel="stylesheet", href="/css/manage/category/category_update.css")
+
+block content
+  h1.hear Cập Nhật Danh Mục
+  form(method="POST" class="form-container", enctype="multipart/form-data")
+    .form-group
+      label(for="category_name") Tên Danh Mục:
+      input(type="text", id="category_name", name="category_name", value=category.category_name, required)
+    
+    .form-group
+      label(for="description") Mô Tả:
+      textarea(id="description", name="description")= category.description
+    
+    .form-group
+      label(for="bannerUrl") URL Banner:
+      input(type="file", id="bannerUrl", name="bannerUrl")
+    
+    .form-group
+      label(for="state") Trạng Thái:
+      select(id="state", name="state", required)
+        option(value="true", selected=category.state === true) Active
+        option(value="false", selected=category.state === false) Inactive
+
+    .form-group
+      button(type="submit") Cập Nhật Danh Mục
+
+  p
+    a(href="/manage/category") Quay Lại Danh Mục
