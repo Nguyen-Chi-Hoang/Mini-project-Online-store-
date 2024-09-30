@@ -1,0 +1,58 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Sales Management Website
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    block styles
+    link(rel="stylesheet" href="/css/manage/main.css")
+  body
+    header(class="header")
+      .container
+        a(href=`/manage`)
+          h1(class="title-name") Sales Management Website
+        nav
+          ul(class="nav-menu")
+            li: a(href=`/manage/category`, class="nav-link") Categories
+            li: a(href=`/manage/item`, class="nav-link") Products
+            li: a(href=`/manage/order`, class="nav-link") Orders
+            li: a(href=`/manage/voucher`, class="nav-link") Vouchers
+            li: a(href=`/manage/flashsale`, class="nav-link") Flash Sale
+            li
+              form(action="/manage/logout" method="POST")
+                  button(type="submit" class="logout-button") Log Out  <!-- Logout link -->
+
+    main
+      if page === 'main'
+        .container-main
+          h2 Dashboard Statistics
+          ul.dashboard-stats
+            li.stat-item 
+              i(class="fa-regular fa-user") 
+              span Managers: #{managerCount}
+            li.stat-item 
+              i(class="fa-solid fa-layer-group") 
+              span Categories: #{categoryCount}
+            li.stat-item 
+              i(class="fa-solid fa-box") 
+              span Items: #{itemCount}
+            li.stat-item 
+              i(class="fa-solid fa-ticket") 
+              span Vouchers: #{voucherCount}
+            li.stat-item 
+              i(class="fa-solid fa-percent") 
+              span Available Flash Sales: #{availableFlashSaleCount}
+            li.stat-item 
+              i(class="fa-regular fa-user") 
+              span Users: #{userCount}
+            li.stat-item 
+              i(class="fa-solid fa-dollar-sign") 
+              span Total Sales Gained: $#{totalSales}
+
+      .container
+        block content
+
+    footer
+      .container
+        p &copy; 2024 Sales Management Website

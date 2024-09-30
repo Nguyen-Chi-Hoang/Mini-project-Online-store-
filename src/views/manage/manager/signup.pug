@@ -1,0 +1,26 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Sign Up - Website Quản Lý Bán Hàng
+    link(rel="stylesheet" href="/css/manage/login_signup.css")
+  body
+    .container
+      h2 Sign Up
+      form(method="post", class="form-container")
+        .form-group
+          label(for="username") Username
+          input(type="text", id="username", name="username", required=true, placeholder="Enter your username")
+        .form-group
+          label(for="email") Email
+          input(type="email", id="email", name="email", required=true, placeholder="Enter your email")
+        .form-group
+          label(for="password") Password
+          input(type="password", id="password", name="password", required=true, placeholder="Enter your password")
+        .form-group
+          label(for="passwordVerity") Confirm Password
+          input(type="password", id="passwordVerity", name="passwordVerity", required=true, placeholder="Confirm your password")
+        button(type="submit") Sign Up
+      p Already a member? 
+        a(href="/manage/manager/login") Login

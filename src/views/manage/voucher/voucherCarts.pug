@@ -1,0 +1,29 @@
+extends ../manageMain.pug
+
+block styles 
+  link(rel="stylesheet" href="../../../css/manage/voucher/voucherCarts.css")
+
+block content
+  h2 Carts Using Voucher #{voucher_name}
+
+  table(class="table table-striped")
+    thead
+      tr
+        th Customer
+        th item
+        th Created At
+        th Total
+    tbody
+      each cart in carts
+        tr
+          td #{cart.user_name}
+          td
+            ul.cart-items
+              each item in cart.items
+                li
+                  span.item-name= item.item_name
+                  span.item-quantity= "(x" + item.number + ")"
+          td #{cart.createdAt.toLocaleDateString()} - #{cart.createdAt.toLocaleTimeString()}
+          td $#{cart.total}
+
+  a(href="/manage/voucher" class="btn btn-primary") Back to Vouchers

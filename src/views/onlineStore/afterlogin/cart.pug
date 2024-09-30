@@ -1,0 +1,50 @@
+extends ../layout.pug
+
+block styles
+  link(rel="stylesheet", href="../css/onlineStore/cart.css")
+
+block content
+  .cart-container
+    table.cart-table
+      thead
+        tr
+          th Item
+          th Quantity
+          th Price
+          th Total
+          th Action
+      tbody
+        each cartItem in cartItems
+          tr
+            td.cart-item
+              .cart-item-details
+                img.cart-item-image(src=`../../../../${cartItem.imageUrl}` alt=cartItem.item_name)
+                span.cart-item-name #{cartItem.item_name}
+            td.cart-quantity #{cartItem.number}
+            td.cart-price $#{cartItem.price}
+            td.cart-total $#{(cartItem.price * cartItem.number).toFixed(2)}
+            td.cart-action
+              form(action=`/cart/delete/${cartItem.item_name}` method="post") 
+                button.remove-button(type="submit") Remove
+    hr
+    .cart-summary
+      .summary-details
+        .total-price
+          p Total Price: 
+          if !applyVoucher 
+            span.cart-total-price $#{total.toFixed(2)}
+          else 
+            span.cart-total $#{newTotal} <span class="original-price">$#{total}</span>
+        .voucher-selection
+          form(action="/cart" method="get")
+            input(type="hidden" name="applyVoucher" value="true")
+            label(for="voucher") Apply Voucher:
+            select#voucher(name="voucher")
+              option(value="" disabled selected) Select a Voucher
+              each voucher in vouchers
+                if(voucher.startDate <= new Date() && voucher.minOrderValue <= total)
+                  option(value=voucher.code)= voucher.code
+            button.apply-voucher-button(type="submit") Apply
+      .checkout-section
+        form(action="/cart" method="post")
+          button.checkout-button(type="submit") Proceed to Checkout

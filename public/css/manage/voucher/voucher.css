@@ -1,0 +1,148 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Button styling */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: white;
+    border: none;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+}
+
+/* Form styling */
+.form-inline {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-right: 10px;
+}
+
+.form-control {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+/* Table styling */
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-collapse: collapse;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f2f2f2;
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.table th {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Pagination controls */
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    list-style: none;
+}
+
+.page-item {
+    margin: 0 5px;
+}
+
+.page-link {
+    display: inline-block;
+    padding: 8px 16px;
+    color: #007bff;
+    text-decoration: none;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+}
+
+.page-item.active .page-link {
+    background-color: #007bff;
+    color: white;
+}
+
+.page-item .page-link:hover {
+    background-color: #0056b3;
+    color: white;
+    border-color: #0056b3;
+}
+.btn-info {
+    background-color: #17a2b8;
+    color: white;
+    border: none;
+}
+
+.btn-info:hover {
+    background-color: #138496;
+    color: white;
+}
+td {
+    white-space: nowrap; /* Prevents line break within the cell */
+}
+
+td .btn {
+    display: inline-block; /* Ensure buttons stay on one line */
+    margin-right: 5px; /* Space between buttons */
+}
+
+td form {
+    display: inline; /* Ensure the form stays inline with other buttons */
+}
+
+td a {
+    display: inline-block; /* Ensure anchor tags behave like buttons inline */
+    height: 40px; /* Same height as other buttons */
+    line-height: 20px;
+}

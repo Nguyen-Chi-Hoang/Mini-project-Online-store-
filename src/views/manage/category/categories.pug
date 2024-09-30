@@ -1,0 +1,83 @@
+extends ../manageMain.pug
+
+block styles
+  link(rel="stylesheet" href="../../css/manage/category/categories.css")
+
+block content
+  h2 Category Management
+  if(managerId==="66c4455bae36599162049449")
+    a(href=`/manage/category/new?directory=banner_images`, class="btn btn-primary") Add New Category
+
+  form(method="get" class="form-inline mb-3" id="filterForm") 
+    div(Class="form-group mr-2")
+      select(name="state" class="form-control" onchange="document.getElementById('filterForm').submit()")
+        option(value="" selected=(selectedState === "")) All state 
+        option(value="true" selected=(selectedState === true)) active 
+        option(value="false" selected=(selectedState === false)) inactive 
+
+    div(class="form-group mr-2")
+      input(type="text" name="search" class="form-control" placeholder="Search category name" value=searchQuery)
+
+    div(class="form-group mr-2")
+      select(name="sort" class="form-control" onchange="document.getElementById('filterForm').submit()")
+        option(value="createdAt" selected=(sortField=="createdAt")) --Sorting--
+        option(value="category_name" selected=(sortField=="category_name")) Category name 
+        option(value="updateAt" selected=(sortField=="updateAt")) Update time
+
+    // Sorting Order Buttons
+    div(class="form-group mr-2")
+      button(type="submit" name="order" value="asc" class="btn btn-secondary #{sortOrder == 'asc' ? 'active' : ''}")
+        i(class="fa-solid fa-caret-up")
+      button(type="submit" name="order" value="desc" class="btn btn-secondary #{sortOrder == 'desc' ? 'active' : ''}")
+        i(class="fa-solid fa-caret-down")
+
+  table(class="sortable-table")
+    thead
+      tr
+        th Name
+        th Description
+        th Banner
+        th State
+        th Created At
+        th Last Update
+        th Actions
+    tbody(id="sortable")
+      each category in categories
+        tr(class="sortable-item", data-id=category.id)
+          td #{category.category_name}
+          td #{category.description}
+          td
+            if category.bannerUrl
+              img(src=`/${category.bannerUrl}`, alt="Banner Image", class="banner-img")
+            else
+              i No Image
+          td 
+            if category.state
+              i(style='color: green;') active 
+            else 
+              i(style='color: red;') inactive
+          td #{category.createdAt.toLocaleDateString() + ' ' + category.createdAt.toLocaleTimeString()}
+          td
+            if category.updateAt
+              | #{category.updateAt.toLocaleDateString() + ' ' + category.updateAt.toLocaleTimeString()}
+            else
+              | None
+          td
+            .btn-container
+              a(href=`/manage/category/${category.id}/update?directory=banner_images`, class="btn btn-warning") Edit
+              form(method="post" action=`/manage/category/${category.id}/delete`, style="display:inline;")
+                button(type="submit", class="btn btn-danger", onclick="return confirm('Are you sure you want to delete this category? This action will also delete all items associated with this category.')") Delete
+
+  // Pagination Controls
+  if totalPages > 1
+    nav(aria-label="Page navigation")
+      ul(class="pagination")
+        if currentPage > 1
+          li(class="page-item")
+            a(class="page-link" href=`?state=${selectedState}&search=${searchQuery}&sort=${sortField}&order=${sortOrder}&page=${currentPage - 1}`) Previous 
+        each page in [...Array(totalPages).keys()]
+          li(class=`page-item ${page + 1 === currentPage ? 'active' : ''}`)
+            a(class="page-link" href=`?state=${selectedState}&search=${searchQuery}&sort=${sortField}&order=${sortOrder}&page=${page + 1}`) #{page + 1}
+        if currentPage < totalPages
+          li(class="page-item")
+            a(class="page-link" href=`?state=${selectedState}&search=${searchQuery}&sort=${sortField}&order=${sortOrder}&page=${currentPage + 1}`) Next

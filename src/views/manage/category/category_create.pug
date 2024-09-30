@@ -1,0 +1,18 @@
+extends ../manageMain.pug
+
+block styles
+  link(rel="stylesheet", href="../../css/manage/category/category_create.css")
+
+block content
+    h1(class="title-create-category") Create New Category
+    form(method="POST" encType="multipart/form-data" class="new-category-form")
+      div
+        label(for="category_name") Category Name:
+        input(type="text" id="category_name" name="category_name" required)
+      div
+        label(for="description") Description:
+        textarea(id="description" name="description")
+      div
+        label(for="bannerUrl") Banner URL:
+        input(type="file" id="bannerUrl" name="bannerUrl")
+      button(type="submit") Create Category

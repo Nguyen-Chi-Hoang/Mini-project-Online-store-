@@ -1,0 +1,26 @@
+extends ../manageMain.pug
+
+block styles 
+  link(rel="stylesheet" href="../../../css/manage/item/itemUser.css")
+
+block content
+  h1 Customers Who Bought the Item
+
+  table
+    thead
+      tr
+        th User Name
+        th Number of Items Bought
+        th Pay Date
+        th Applied Voucher
+    tbody
+      each cart in carts
+        tr
+          td(data-label="User Name")= cart.user_name
+          td(data-label="Number of Items Bought")
+            - let totalItems = cart.items.reduce((sum, item) => sum + item.number, 0);
+            = totalItems
+          td(data-label="Pay Date")= cart.payDate ? cart.payDate.toDateString() : 'N/A'
+          td(data-label="Applied Voucher")= cart.applyVoucher ? 'Yes' : 'No'
+
+  a(href="/manage/item" class="btn btn-primary") Back to items page

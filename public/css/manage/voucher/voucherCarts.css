@@ -1,0 +1,99 @@
+/* General page styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h2 {
+    text-align: center;
+    margin: 20px 0;
+    color: #333;
+  }
+  
+  /* Table styling */
+  table {
+    width: 100%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  thead th {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  /* List styling */
+  li {
+    list-style: none; /* This removes the dot in front of li */
+    margin-bottom: 5px;
+  }
+  
+  a.btn-primary {
+    display: block;
+    width: 200px;
+    margin: 30px auto;
+    text-align: center;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  a.btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Item column styling */
+td .cart-items {
+    margin: 0;
+    padding: 0;
+    list-style: none; /* Remove dots for list items */
+  }
+  
+  td .cart-items li {
+    margin-bottom: 8px;
+    padding: 8px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  td .cart-items li span.item-name {
+    font-weight: bold;
+  }
+  
+  td .cart-items li span.item-quantity {
+    font-style: italic;
+    color: #555;
+  }
+  
+  td .cart-items li span.item-time {
+    color: #999;
+    font-size: 12px;
+  }
+  
+  /* Additional spacing for better layout */
+  td {
+    vertical-align: top;
+    padding: 15px;
+  }

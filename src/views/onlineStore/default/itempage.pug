@@ -1,0 +1,46 @@
+extends ../layout.pug 
+
+block styles 
+    link(rel="stylesheet", href="./css/onlineStore/itempage.css")
+
+block content 
+    section.banner 
+        img(src=banner, alt="Random Banner")
+        h1 Welcome to Our Online Store!
+        p Explore a wide range of products handpicked just for you. Whether you're looking for the latest fashion trends, elegant timepieces, or cutting-edge electronics, we've got something for everyone. Browse through our curated collections and find the perfect item to match your style and needs.
+
+    section.itemsDisplay
+        .filters
+            h2 Filters
+            form
+                .form-group
+                    label(for="sort") Sort by:
+                    select#sort(name="sort")
+                        option(value="price_asc") Price: Low to High
+                        option(value="price_desc") Price: High to Low
+                        option(value="name_asc") Name: A to Z
+                        option(value="name_desc") Name: Z to A
+                .form-group
+                    label(for="category") Category:
+                    select#category(name="category")
+                        option(value="all") All Categories
+                        option(value="clothing") Clothing
+                        option(value="watches") Watches
+                        option(value="electronics") Electronics
+                .form-group
+                    label(for="search") Search:
+                    input#search(type="text", name="search", placeholder="Search for items...")
+                button(type="submit") Apply
+
+        .items
+            each item in items
+                a.item(href=`/item/${item._id}`)
+                    img(src=item.image)
+                    h3 #{item.name}
+                    if item.isSale 
+                        p.sale-price 
+                            span.sale-label Sale
+                            
+                            p.sale-price $#{item.salePrice} <span class="original-price">$#{item.purchasePrice}</span>
+                    else 
+                        p.normal-price $#{item.purchasePrice}

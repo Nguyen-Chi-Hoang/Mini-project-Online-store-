@@ -1,0 +1,76 @@
+extends ../layout.pug
+
+block content
+    section.hero
+      h1 Discover a World of Diversity Products
+      p Explore our wide range of unique and inclusive products that celebrate diversity.
+      .btn-group
+        button.btn.btn-primary Shop
+        button.btn.btn-secondary Learn More
+      .hero-image
+        each banner in banners
+            img(src="../../"+banner.bannerUrl, class="slide", alt="")
+
+    section.collection
+      h2 Discover a wide range of products in our diverse collection
+      .product-grid
+        .product
+          img(src="../../public/images/image1.png" alt="Product Image")
+          h3 Find the perfect item for your needs in our extensive selection
+          p Explore our sliding banners showcasing different product categories.
+          a.btn(href="/item") Shop
+        .product
+          img(src="../../public/images/image2.png" alt="Product Image")
+          h3 Experience the convenience of shopping from the comfort of your home
+          p Browse through our curated list of items and find what you're looking for.
+          a.btn(href="/item") Buy
+        .product
+          img(src="../../public/images/image3.png" alt="Product Image")
+          h3 Stay up-to-date with the latest trends and new arrivals
+          p Discover unique and innovative products in our collection.
+          a.btn(href="/item") Shop
+
+    section.featured
+      h2 Discover Featured
+      p Explore our diverse range of products.
+      a(href="/item") 
+        button.btn View all
+      .featured-grid
+        each item in items  
+          .featured-product
+            img(src=`../../${item.image}` alt="Featured Product")
+
+    section.new-arrivals
+      h2 Discover Our New Arrivals Today
+      p Explore our diverse collection of high-quality products for every occasion.
+      .btn-group
+        button.btn.btn-primary Shop
+        button.btn.btn-secondary Learn More
+
+    script.
+      // Swiping banners
+      document.addEventListener('DOMContentLoaded', function() {
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+          // Reset all slides to be hidden
+          slides.forEach((slide, i) => {
+            slide.style.display = 'none'; // Hide all slides
+            slide.style.transform = `translateX(${(i - index) * 100}%)`; // Position slides correctly
+          });
+
+          // Display the current slide
+          slides[index].style.display = 'block';
+        }
+
+        // Show the first slide initially
+        showSlide(currentIndex);
+
+        // Auto swipe every 3 seconds
+        setInterval(() => {
+          currentIndex = (currentIndex + 1) % totalSlides;
+          showSlide(currentIndex);
+        }, 3000);
+      });

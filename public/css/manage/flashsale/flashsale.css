@@ -1,0 +1,178 @@
+/* Flash Sale Page Styles */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+h2 {
+    margin-top: 20px;
+    font-size: 28px;
+    font-weight: 600;
+    color: #007bff;
+    text-align: center;
+}
+
+button[type="submit"].btn-secondary {
+    margin-left: 10px;
+    padding: 8px 16px;
+    background-color: #6c757d;
+    border: 1px solid #6c757d;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  button[type="submit"].btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+  }
+
+.form-inline {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-right: 10px;
+    flex-grow: 1;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: white;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: left;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+}
+
+.table th {
+    background-color: #f1f1f1;
+    font-weight: 600;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f8f9fa;
+}
+
+/* General Button Styles */
+.btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Add to Flash Sale Button */
+  .btn-success {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+  }
+  
+  .btn-success:hover {
+    background-color: #218838;
+    color: #e6e6e6;
+  }
+  
+  /* Remove from Flash Sale Button */
+  .btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+  }
+  
+  .btn-danger:hover {
+    background-color: #c82333;
+    color: #e6e6e6;
+  }
+  
+  /* Edit Flash Sale Button */
+  .btn-warning {
+    background-color: #ffc107;
+    color: #212529;
+    border: none;
+  }
+  
+  .btn-warning:hover {
+    background-color: #e0a800;
+    color: #fff;
+  }
+  
+  /* Button Container Styling */
+  td form {
+    display: inline-block;
+    margin-right: 5px;
+  }
+  
+  td a {
+    display: inline-block;
+    margin-right: 5px;
+  }
+
+.table td .btn-group {
+  display: flex;
+  gap: 10px; /* Adjust the gap between buttons if needed */
+}
+
+.table td .btn-group .btn {
+  flex: 1;
+}
+
+
+.pagination {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.pagination .page-item {
+    margin: 0 5px;
+}
+
+.pagination .page-link {
+    color: #007bff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #dee2e6;
+    text-decoration: none;
+}
+
+.pagination .page-link:hover {
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+
+.pagination .active .page-link {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}

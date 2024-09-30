@@ -1,0 +1,28 @@
+extends ../manageMain.pug
+
+block styles
+  link(rel="stylesheet" href="../../../../css/manage/flashsale/createflashsale.css")
+
+block content
+  h2 Create New Flash Sale
+
+  form(method="post" class="form-horizontal")
+    div(class="form-group")
+      label(for="productName") Product Name
+      input(type="text" name="productName" id="productName" class="form-control" value=itemName readonly)
+
+    div(class="form-group")
+      label(for="salePercent") Sale Percent
+      input(type="number" name="salePercent" id="salePercent" class="form-control" placeholder="Enter sale price" min="1" max="100" required)
+
+    div(class="form-group")
+      label(for="quantity") Quantity
+      input(type="number" name="quantity" id="quantity" class="form-control" placeholder="Enter quantity available for flash sale" min="1" required)
+
+    div(class="form-group")
+      label(for="endDate") End Time
+      input(type="datetime-local" name="endDate" id="endDate" class="form-control" required)
+
+    div(class="form-group")
+      button(type="submit" class="btn btn-primary") Create Flash Sale
+      a(href=`/manage/flashsale`, class="btn btn-secondary") Cancel

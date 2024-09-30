@@ -1,0 +1,56 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  thead th {
+    background-color: #4CAF50;
+    color: white;
+    text-align: left;
+    padding: 12px;
+    font-weight: bold;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  tbody tr:hover {
+    background-color: #ddd;
+  }
+  
+  tbody td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Ensures uniform width for all columns */
+  th, td {
+    width: 25%;
+  }
+  
+  /* Add some margin and styling for the heading */
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+  }
+  a.btn-primary {
+    display: block;
+    width: 200px;
+    margin: 30px auto;
+    text-align: center;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  a.btn-primary:hover {
+    background-color: #0056b3;
+  }

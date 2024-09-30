@@ -1,0 +1,43 @@
+extends ../layout.pug
+
+block styles
+  link(rel="stylesheet", href="../css/onlineStore/detailItemPage.css")
+
+block content 
+  main
+    form(method="POST")
+      .container
+        .item-details
+          .item-image
+            img(src=`../${item.image}`, alt=item.name)
+          .item-description
+            h2= item.name
+            if item.isSale 
+              p.sale-price $#{item.salePrice} <span(class="original-price") $#{item.purchasePrice}</span>
+            else 
+              p.price $#{item.purchasePrice}
+            h2.product-detail Product detail:
+            p.details #{item.description}
+            
+            .quantity
+              label(for="quantity") Quantity:
+              input(id="quantity", type="number", min="1", value="1", name="quantity")
+
+            .actions
+              if isAuthenticated
+                button(type="submit") Add to Cart
+              else
+                p Please log in to add items to your cart.
+              a.btn.btn-secondary(href="/item") Back to Store
+
+      .related-items
+        h2 Related Items
+        .items-list
+          each relatedItem in relatedItems
+            a.related-item(href=`/item/${relatedItem._id}`)
+              img(src=`../${relatedItem.image}`, alt=relatedItem.name)
+              h3= relatedItem.name
+              if relatedItem.isSale 
+                p.sale-price $#{relatedItem.salePrice} <span(class="original-price") $#{relatedItem.purchasePrice}</span>
+              else 
+                p $#{relatedItem.purchasePrice}

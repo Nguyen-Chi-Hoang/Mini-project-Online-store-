@@ -1,0 +1,190 @@
+/* Table Layout: Force table to fit within available space */
+.table {
+  width: 120%;
+  border-collapse: collapse;
+}
+
+/* Control table cell overflow */
+.table td, .table th {
+  max-width: 200px; /* Set a maximum width for each column (adjust as needed) */
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+.table td.actions {
+  width: 200px; /* Set fixed width for the actions column */
+  text-align: center; /* Center align buttons */
+}
+  
+  .table th {
+    background-color: #f4f4f4;
+  }
+  
+  .item-img {
+    max-width: 70px;
+    max-height: 70px;
+    object-fit: cover;
+  }
+  
+  .btn {
+    padding: 5px 10px;
+    margin-right: 5px;
+    text-decoration: none;
+    color: white;
+    border-radius: 3px;
+    border: none;
+  }
+
+  /* Pagination Container */
+nav[aria-label="Page navigation"] {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Pagination List */
+ul.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+/* Pagination Items */
+ul.pagination li.page-item {
+  margin: 0 5px;
+}
+
+/* Pagination Links */
+ul.pagination li.page-item a.page-link {
+  display: block;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #007bff;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover and Active States */
+ul.pagination li.page-item a.page-link:hover {
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+}
+
+ul.pagination li.page-item.active a.page-link {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+  cursor: default;
+}
+
+/* Disabled State */
+ul.pagination li.page-item.disabled a.page-link {
+  color: #6c757d;
+  background-color: #fff;
+  border-color: #dee2e6;
+  cursor: not-allowed;
+}
+
+/* Form Container */
+form#filterForm {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Form Group */
+.form-group {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+/* Category Select Dropdown */
+select.form-control {
+  width: 200px;
+  padding: 8px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #495057;
+  transition: border-color 0.3s;
+}
+
+select.form-control:focus {
+  border-color: #80bdff;
+  outline: none;
+}
+
+/* Search Bar */
+input.form-control {
+  width: 300px;
+  padding: 8px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #495057;
+  transition: border-color 0.3s;
+}
+
+input.form-control:focus {
+  border-color: #80bdff;
+  outline: none;
+}
+
+/* Submit Button */
+button[type="submit"].btn-secondary {
+  padding: 8px 16px;
+  background-color: #6c757d;
+  border: 1px solid #6c757d;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+button[type="submit"].btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+td .btn {
+  display: inline-block;
+  margin-right: 5px; /* Space between buttons */
+  font-size: 14px;
+  line-height: 20px; /* Ensures consistent text alignment */
+}
+
+/* Ensures the form stays inline */
+td form.inline-form {
+  display: inline;
+}
+
+.btn-primary, .btn-warning, .btn-danger, .btn-info {
+  text-align: center;
+  border-radius: 3px;
+  border: none;
+}
+
+.btn-primary {
+  background-color: #007bff;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+}
+
+.btn-info {
+  background-color: #17a2b8;
+}
+/* For small screens, add horizontal scrolling */
+.table-responsive {
+  overflow-x: auto;
+}

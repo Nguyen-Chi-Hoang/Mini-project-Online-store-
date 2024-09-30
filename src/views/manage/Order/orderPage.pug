@@ -1,0 +1,70 @@
+extends ../manageMain.pug
+
+block styles
+  link(rel="stylesheet" href="../../css/manage/orders/main.css")
+
+block content
+    h2 Customer Orders
+
+    // Filter by customer name and payment status
+    form(method="get" class="form-inline" id="filterForm")
+      .form-group
+        input(type="text", id="customerName", name="customerName", placeholder="Enter customer name you want to find" value=customerName || '')
+
+      .form-group
+        select(id="isPay" name="isPay" onchange="document.getElementById('filterForm').submit()")
+          option(value="" selected=(isPay=== "")) -- All --
+          option(value="true" selected=(isPay===true)) Paid
+          option(value="false" selected=(isPay===false)) Unpaid
+
+      .form-group 
+        select(name="sort" onchange="document.getElementById('filterForm').submit()")
+          option(value="createdAt" selected=(sortField == 'createdAt')) --Sorting--
+          option(value="user_name" selected=(sortField == 'user_name')) User name
+          option(value="total" selected=(sortField == 'total')) Total price
+
+      .form-group
+        p
+          button(type="submit" name="order" value="asc" class="btn btn-secondary #{sortOrder == 'asc' ? 'active' : ''}")
+            i(class="fa-solid fa-caret-up")
+          button(type="submit" name="order" value="desc" class="btn btn-secondary #{sortOrder == 'desc' ? 'active' : ''}")
+            i(class="fa-solid fa-caret-down")
+
+    table(class="order-table")
+      thead
+        tr
+          th Customer Name
+          th Items
+          th Total Amount
+          th Order Date
+          th Checked
+      tbody
+        each order in orders
+          tr
+            td= order.user_name
+            td
+              ul
+                each item in order.items
+                  li= `${item.item_name} (x${item.number}) - $${item.price}`
+            td $#{order.total.toFixed(2)}
+            td #{order.createdAt.toLocaleDateString() + ' ' + order.createdAt.toLocaleTimeString()}
+            if order.isPay 
+              td
+                i(class="fa-solid fa-check fa-2x" style="color: green;")
+            else 
+              td 
+                i(class="fa-solid fa-x fa-2x" style="color: red;")
+
+      // Pagination Controls
+    if totalPages > 1
+      nav(aria-label="Page navigation")
+        ul(class="pagination")
+          if currentPage > 1
+            li(class="page-item")
+              a(class="page-link" href=`?state=${selectedState}&search=${searchQuery}&sort=${sortField}&order=${sortOrder}&page=${currentPage - 1}`) Previous 
+          each page in [...Array(totalPages).keys()]
+            li(class=`page-item ${page + 1 === currentPage ? 'active' : ''}`)
+              a(class="page-link" href=`?state=${selectedState}&search=${searchQuery}&sort=${sortField}&order=${sortOrder}&page=${page + 1}`) #{page + 1}
+          if currentPage < totalPages
+            li(class="page-item")
+              a(class="page-link" href=`?state=${selectedState}&search=${searchQuery}&sort=${sortField}&order=${sortOrder}&page=${currentPage + 1}`) Next

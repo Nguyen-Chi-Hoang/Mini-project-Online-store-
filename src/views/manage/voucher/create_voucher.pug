@@ -1,0 +1,36 @@
+extends ../manageMain.pug
+
+block styles
+  link(rel="stylesheet" href="../../../css/manage/voucher/create_voucher.css")
+
+block content
+  h2 Create New Voucher
+
+  form(method="post" action=`/manage/voucher/new`, class="form-horizontal")
+    div(class="form-group")
+      label(for="code") Voucher Code
+      input(type="text" name="code" id="code" class="form-control" placeholder="Enter voucher code" required)
+
+    div(class="form-group")
+      label(for="discountPercentage") Discount Percentage
+      input(type="number" name="discountPercentage" id="discountPercentage" class="form-control" placeholder="Enter discount percentage" min="1" max="100" required)
+
+    div(class="form-group")
+      label(for="minOrderValue") Minimum Order Value
+      input(type="number" name="minOrderValue" id="minOrderValue" class="form-control" placeholder="Enter minimum order value" min="0" required)
+
+    div(class="form-group")
+      label(for="startDate") Start Date
+      input(type="date" name="startDate" id="startDate" class="form-control" required)
+
+    div(class="form-group")
+      label(for="endDate") End Date
+      input(type="date" name="endDate" id="endDate" class="form-control" required)
+
+    div(class="form-group")
+      label(for="totalQuantity") Total Quantity
+      input(type="number" name="totalQuantity" id="totalQuantity" class="form-control" placeholder="Enter total quantity" min="1" required)
+
+    div(class="form-group")
+      button(type="submit" class="btn btn-primary") Create Voucher
+      a(href=`/manage/voucher`, class="btn btn-secondary") Cancel

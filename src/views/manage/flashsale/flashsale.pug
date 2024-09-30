@@ -1,0 +1,80 @@
+extends ../manageMain.pug
+
+block styles
+  link(rel="stylesheet" href="../../css/manage/flashsale/flashsale.css")
+
+block content
+  h2 Flash Sale Management
+
+  form(method="get" class="form-inline mb-3" id="filterForm")
+    div(Class="form-group mr-2")
+      select(name="state" class="form-control" onchange="document.getElementById('filterForm').submit()")
+        option(value="" selected=(selectedState === "")) All state 
+        option(value="true" selected=(selectedState === true)) Sale 
+        option(value="false" selected=(selectedState === false)) Not sale 
+    div(class="form-group mr-2")
+      input(type="text" name="search" class="form-control" placeholder="Search by product name" value=searchQuery)
+    div(class="form-group mr-2")
+      select(name="sort" class="form-control" onchange="document.getElementById('filterForm').submit()")
+        option(value="createdAt" selected=(sortField == 'createdAt')) --Sorting--
+        option(value="name" selected=(sortField == 'name')) Product Name
+        option(value="salePrice" selected=(sortField == 'salePrice')) Sale Price
+        option(value="inventoryQuantity" selected=(sortField == 'inventoryQuantity')) Inventory Quantity
+        option(value="weight" selected=(sortField == 'weight')) Weight
+
+    div(class="form-group mr-2")
+      button(type="submit" name="order" value="asc" class="btn btn-secondary #{sortOrder == 'asc' ? 'active' : ''}")
+        i(class="fa-solid fa-caret-up")
+      button(type="submit" name="order" value="desc" class="btn btn-secondary #{sortOrder == 'desc' ? 'active' : ''}")
+        i(class="fa-solid fa-caret-down")
+
+  table(class="table table-striped")
+    thead
+      tr
+        th Image
+        th Product Name
+        th Barcode
+        th Category
+        th Sale Price
+        th Inventory Quantity
+        th Weight
+        th Actions
+    tbody
+      each item in items
+        tr
+          td
+            img(src=`/${item.image}` alt=item.name style="width: 100px; height: auto;")
+          td #{item.name}
+          td
+            img(src=`/${item.barcode}` alt=item.name style="width: 100px; height: auto;")
+          td #{item.category_type}
+          if item.isSale
+            td(style="color: green") #{item.salePrice}
+          else 
+            td(style="color: red") #{item.salePrice}
+          td #{item.inventoryQuantity}
+          td #{item.weight} kg
+          td
+            if item.isSale
+              .btn-group
+                a(href=`/manage/flashsale/${item._id}/update`) 
+                  button(type="submit" class="btn btn-warning") Edit
+                form(method="post" action=`/manage/flashsale/${item._id}/delete`)
+                  button(type="submit" class="btn btn-danger") Remove
+                
+            else
+              form(method="get" action=`/manage/flashsale/${item._id}/add`)
+                button(type="submit" class="btn btn-success") Add to Flash Sale
+
+  if totalPages > 1
+    nav(aria-label="Page navigation")
+      ul(class="pagination")
+        if currentPage > 1
+          li(class="page-item")
+            a(class="page-link" href=`?search=${searchQuery}&sort=${sortField}&order=${sortOrder}&page=${currentPage - 1}`) Previous
+        each page in [...Array(totalPages).keys()]
+          li(class=`page-item ${page + 1 === currentPage ? 'active' : ''}`)
+            a(class="page-link" href=`?search=${searchQuery}&sort=${sortField}&order=${sortOrder}&page=${page + 1}`) #{page + 1}
+        if currentPage < totalPages
+          li(class="page-item")
+            a(class="page-link" href=`?search=${searchQuery}&sort=${sortField}&order=${sortOrder}&page=${currentPage + 1}`) Next

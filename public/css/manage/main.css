@@ -1,0 +1,173 @@
+/* Reset mặc định của trình duyệt */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Phong cách tổng thể */
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #f4f4f4;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+
+/* General header styling */
+.header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  border-bottom: 4px solid #f4f4f4;
+}
+
+.header a {
+  text-decoration: none;
+  color: white;
+}
+
+.header h1.title-name {
+  text-align: center;
+  font-size: 2.5em;
+  margin: 0;
+  padding-bottom: 10px;
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-menu li {
+  margin: 0 15px;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-link:hover {
+  background-color: #555;
+  color: #fff;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .nav-menu {
+    flex-direction: column;
+  }
+
+  .nav-menu li {
+    margin: 10px 0;
+  }
+}
+
+footer {
+  padding: 20px;
+  background: #333;
+  color: #fff;
+  text-align: center;
+}
+
+main {
+  padding: 20px;
+  background: #fff;
+  margin-top: 20px;
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Unique Log Out button styling */
+.logout-button {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 5px;
+  background-color: red;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.logout-button:hover {
+  background-color: #ff6666; /* Lighter red on hover */
+  color: #fff;
+}
+
+/* Dashboard Statistics Styles */
+.container-main {
+  max-width: 1200px; /* Limit container width */
+  margin: 0 auto;    /* Center the container */
+  padding: 20px;     /* Add some padding */
+}
+
+.container-main h2 {
+  font-size: 24px;   /* Increase font size for the header */
+  margin-bottom: 20px; /* Space below the header */
+  color: #333;       /* Dark color for the header */
+  text-align: center; /* Center the header text */
+}
+
+.container-main ul {
+  list-style: none;  /* Remove default list styles */
+  padding: 0;        /* Remove padding */
+  margin: 0;         /* Remove margin */
+  display: grid;     /* Use grid layout for items */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+  gap: 15px;         /* Space between items */
+}
+
+.container-main li {
+  background: #f8f9fa; /* Light background for each item */
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px;  /* Rounded corners */
+  padding: 15px;       /* Add padding inside each item */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.2s; /* Smooth transition for hover effect */
+}
+
+.container-main li:hover {
+  transform: translateY(-2px); /* Slight lift on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Flex container for each stat item */
+ul.dashboard-stats {
+  list-style-type: none; /* Remove default list styling */
+  padding: 0;
+  margin: 0;
+}
+
+li.stat-item {
+  display: flex;
+  align-items: center; /* Aligns icon and text vertically */
+  margin-bottom: 10px; /* Adds space between each stat item */
+}
+
+li.stat-item i {
+  margin-right: 10px; /* Adds space between the icon and the text */
+  font-size: 1.2em; /* Adjust the size of the icons */
+}
+
+li.stat-item span {
+  font-size: 1em; /* Adjust the text size to be consistent */
+}

@@ -1,0 +1,77 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Diversity Products
+    link(rel="stylesheet" href="../../css/onlineStore/storepage.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css")
+    block styles
+
+  body
+    header
+      .navbar
+        a.logo(href="/") Logo
+        nav
+          ul
+            if isAuthenticated
+              li: a(class="fa-solid fa-cart-shopping fa-2x", href=`/cart?applyVoucher=false`)
+            if !isAuthenticated 
+              li: a(href="/item") Shop Now
+            else 
+              li: a(href=`/item`) Shop Now
+            li: a(href="#") Special Offers
+            li: a(href="#") New Arrivals
+
+            //- Conditionally render buttons based on authentication status
+            if !isAuthenticated
+              li: a.btn.btn-secondary(href="/register") Sign Up
+              li: a.btn.btn-primary(href="/login") Log In
+            else
+              li
+                form(action="/logout" method="POST")
+                  button.btn.btn-primary(type="submit") Log Out
+    
+    block content 
+
+  footer
+    .footer-container
+      .footer-logo
+        a(href="/") Logo
+      .footer-newsletter
+        p Join our newsletter to receive updates on new features and releases.
+        form.newsletter-form
+          input(type="email" placeholder="Enter your email")
+          button Subscribe
+        p.newsletter-terms By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.
+      .footer-links
+        .link-column
+          h3 Column One
+          ul
+            li: a(href="#") Link One
+            li: a(href="#") Link Two
+            li: a(href="#") Link Three
+            li: a(href="#") Link Four
+            li: a(href="#") Link Five
+        .link-column
+          h3 Column Two
+          ul
+            li: a(href="#") Link Six
+            li: a(href="#") Link Seven
+            li: a(href="#") Link Eight
+            li: a(href="#") Link Nine
+            li: a(href="#") Link Ten
+        .social-links
+          h3 Follow us
+          ul
+            li: a(href="#")
+              i(class="fa-brands fa-facebook")
+            li: a(href="#")
+              i(class="fa-brands fa-instagram")
+            li: a(href="#") 
+              i(class="fa-brands fa-x-twitter")
+            li: a(href="#")
+              i(class="fa-brands fa-youtube")
+    .footer-bottom
+      p © 2024 Your Company. All rights reserved.
+      p: a(href="#") Privacy Policy | Terms of Service | Cookie Settings

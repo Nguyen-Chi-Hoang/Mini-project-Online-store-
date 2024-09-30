@@ -1,0 +1,146 @@
+.banner {
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px 20px;
+
+    border-radius: 10px; /* Adds rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a soft shadow for depth */
+    text-align: center; /* Centers text */
+}
+
+.banner img {
+    width: 60%;
+    height: auto; /* Keeps the image aspect ratio */
+    margin-bottom: 20px; /* Adds space between the image and the text */
+    border-radius: 10px; /* Adds rounded corners to the image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a soft shadow to the image */
+}
+
+.banner h1 {
+    font-size: 2em;
+    color: #333; /* A dark color for contrast */
+    margin-bottom: 10px;
+}
+
+.banner p {
+    font-size: 1.2em;
+    color: #555; /* A slightly lighter color for the paragraph */
+    max-width: 80%;
+    margin: 0 auto; /* Center the paragraph */
+    line-height: 1.5; /* Improves readability */
+}
+
+.itemsDisplay {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.filters {
+    flex: 1;
+    max-width: 250px;
+    margin-right: 20px;
+    background-color: #f8f8f8;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filters .form-group {
+    margin-bottom: 15px;
+}
+
+.filters label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.filters select, 
+.filters input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.filters button {
+    width: 100%;
+    padding: 10px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.filters button:hover {
+    background-color: #4cae4c;
+}
+
+.items {
+    flex: 3;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.items .item {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s;
+    text-decoration: none;
+    color: black;
+}
+
+.items .item img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.items .item h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+/* Sale Label */
+.items .sale-label {
+    font-size: 0.9em;
+    color: black;
+    background-color: #f0f0f0;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 5px;
+    text-transform: uppercase;
+}
+
+.items .sale-price {
+    font-size: 1em;
+    color: red;
+    font-weight: bold;
+}
+
+.items .sale-price .original-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 0.9em;
+    margin-left: 5px;
+}
+
+.items .normal-price {
+    font-size: 1em;
+    color: black;
+    font-weight: bold;
+}
+
+/* Hover Effect */
+.items .item:hover {
+    transform: scale(1.05);
+}
